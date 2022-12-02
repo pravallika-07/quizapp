@@ -19,7 +19,7 @@ let widthPercentage = (width * 60) / 100;
 
 
 
-const SignIn = () => {
+const SignIn = ({navigation}:any) => {
   const _signIn = async () => {
     GoogleSignin.configure({
       scopes: [],
@@ -61,15 +61,15 @@ const SignIn = () => {
         placeholderTextColor={'#000000'}
       />
       <Text style={styles.forgotpass}>Forgot your Password ?</Text>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button}
+      onPress={() => navigation.navigate('Home')}
+      >
         <Text style={styles.buttonText}>Log in</Text>
       </TouchableOpacity>
       <Text style={styles.textforOr}>OR</Text>
-      <TouchableOpacity style={styles.buttondiv}>
+      {/* <TouchableOpacity style={styles.buttondiv}>
         <Text style={styles.buttonforText}>Continue with facebook</Text>
-      </TouchableOpacity>
-    
-
+      </TouchableOpacity> */}
       <GoogleSigninButton
         style={{width: widthPercentage, height: 48}}
         size={GoogleSigninButton.Size.Wide}
@@ -100,8 +100,6 @@ const styles = StyleSheet.create({
   input: {
     borderRadius: 25,
     width: '80%',
-    // marginLeft: '10%',
-    // marginRight: '10%',
     backgroundColor: '#dcdedc',
     marginTop: '6%',
     paddingLeft: '5%',
@@ -130,7 +128,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20,
-
     fontWeight: 'bold',
     color: '#ffffff',
   },
@@ -141,24 +138,24 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingVertical: 10,
   },
-  buttondiv: {
-    width: '60%',
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginHorizontal: '10%',
-    fontFamily: 'regular',
-    fontSize: 18,
-    backgroundColor: '#0a16fb',
-    marginTop: '5%',
-    marginBottom: '5%',
-    paddingLeft: '5%',
-    color: 'black',
-    padding: '3%',
-  },
-  buttonforText: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: '#ffffff',
-  },
+  // buttondiv: {
+  //   width: '60%',
+  //   borderRadius: 10,
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  //   marginHorizontal: '10%',
+  //   fontFamily: 'regular',
+  //   fontSize: 18,
+  //   backgroundColor: '#0a16fb',
+  //   marginTop: '5%',
+  //   marginBottom: '5%',
+  //   paddingLeft: '5%',
+  //   color: 'black',
+  //   padding: '3%',
+  // },
+  // buttonforText: {
+  //   fontSize: 15,
+  //   fontWeight: 'bold',
+  //   color: '#ffffff',
+  // },
 });

@@ -1,10 +1,25 @@
 import {StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {data} from '../utils/data';
+import {db} from '../firebase/firebase';
+import {collection, getDocs} from 'firebase/firestore';
 
 const Quiz = ({navigation}: any) => {
   const [randomQuestion, setRandomQuestion] = useState([]);
   const [displayQues, setDisplayQues] = useState(0);
+
+  // for database
+  const [questions, setQuestions] = useState("");
+  const questionsCollectionRef = collection(db, 'question');
+
+  useEffect(() => {
+    const getQuestions = async () => {
+      const data = await getDocs(questionsCollectionRef);
+      console.log(data.docs, 'dataaaaaaa');
+      setQuestions(data.docs.map(doc => ({...doc.data()})));
+    };
+    getQuestions();
+  }, []);
 
   useEffect(() => {
     getRandomQuestion(data);
@@ -29,11 +44,15 @@ const Quiz = ({navigation}: any) => {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Question</Text>
+
+      {/* {questions.map(()=>{
+          return( */}
       <View style={styles.boxforquestion}>
         <Text style={styles.question}>
           {randomQuestion[displayQues] && randomQuestion[displayQues].question}
         </Text>
       </View>
+
       <TouchableOpacity
         style={styles.button}
         onPress={() => handleQuesChange()}>

@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-import { Min,Timer } from '../Store/Action';
+import {Min, Timer} from '../Store/Action';
 
 const SetTimer = ({navigation}: any) => {
   const [timer, setTimer] = useState('');
@@ -17,27 +17,27 @@ const SetTimer = ({navigation}: any) => {
 
   const handleSubmit = () => {
     dispatch(Timer(timer));
-    dispatch(Min(min))
+    dispatch(Min(min));
     navigation.navigate('Quiz');
   };
   return (
     <View style={styles.container}>
       <Text style={styles.timer}>Set Timer</Text>
       <View style={styles.divforinput}>
-      <TextInput
-        keyboardType="numeric"
-        style={styles.input}
-        placeholder={'Set Timer in minutes'}
-        placeholderTextColor={'#000000'}
-        onChangeText={text => setMin(text)}
-      />
-       <TextInput
-        keyboardType="numeric"
-        style={styles.input}
-        placeholder={'Set Timer in seconds'}
-        placeholderTextColor={'#000000'}
-        onChangeText={text => setTimer(text)}
-      />
+        <TextInput
+          keyboardType="numeric"
+          style={styles.input}
+          placeholder={'Set Timer in minutes'}
+          placeholderTextColor={'#000000'}
+          onChangeText={text => setMin(text)}
+        />
+        <TextInput
+          keyboardType="numeric"
+          style={styles.input}
+          placeholder={'Set Timer in seconds'}
+          placeholderTextColor={'#000000'}
+          onChangeText={text => setTimer(text)}
+        />
       </View>
       <TouchableOpacity onPress={handleSubmit} style={styles.button}>
         <Text style={styles.buttonText}>Go</Text>
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#000000',
   },
-  divforinput:{
-    flexDirection:'row',
-  }
+  divforinput: {
+    flexDirection: 'row',
+  },
 });

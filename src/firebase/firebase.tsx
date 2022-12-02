@@ -1,4 +1,7 @@
-import firebase from 'firebase'
+import { initializeApp} from 'firebase/app'
+// import {getFirestore} from '@firebase/firestore'
+import {getAuth} from 'firebase/auth';
+import {initializeFirestore} from 'firebase/firestore';
 
 var firebaseConfig = {
     apiKey: "AIzaSyAZc-7JKWvgWtrTU0tRqTvl6PFpvSCFiio",
@@ -10,6 +13,14 @@ var firebaseConfig = {
   };
   
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  // const app = initializeApp(firebaseConfig);
 
-  export {firebase}
+  // export const db = getFirestore(app);
+
+  const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = initializeFirestore(app, {
+  experimentalForceLongPolling: true,
+});
+
+export {auth, db};

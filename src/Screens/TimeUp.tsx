@@ -39,7 +39,6 @@ const TimeUp = (props: any) => {
   const inputMinute = useSelector((store: any) => store.min);
   let number = +inputTime;
   let minute = +inputMinute;
-
   const [seconds, setSeconds] = useState(number);
   const [minutes, setMinutes] = useState(minute);
 
